@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "652786859784",
+    "project_id": "gym-mobile-468c8",
+    "storage_bucket": "gym-mobile-468c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652786859784:android:ad1f63377ff0213e5c76bd",
+        "android_client_info": {
+          "package_name": "com.tqniait.fitness"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652786859784-d0otn7m21svt0rea05bn12b3uj4nsbd5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWmeHCG25EoopHF0g7Ak5LJkdEyNBXsck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652786859784-d0otn7m21svt0rea05bn12b3uj4nsbd5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
