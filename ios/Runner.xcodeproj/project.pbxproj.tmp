@@ -266,7 +266,9 @@
 			<key>files</key>
 			<array/>
 			<key>inputPaths</key>
-			<array/>
+			<array>
+				<string>${TARGET_BUILD_DIR}/${INFOPLIST_PATH}</string>
+			</array>
 			<key>isa</key>
 			<string>PBXShellScriptBuildPhase</string>
 			<key>name</key>
@@ -327,6 +329,26 @@
 			<string>Pods_Runner.framework</string>
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>5A93A02E2AFAD8C300103ABE</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>GoogleService-Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5A93A02F2AFAD8C300103ABE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5A93A02E2AFAD8C300103ABE</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>74858FAD1ED2DC5600515810</key>
 		<dict>
@@ -544,7 +566,7 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 			<key>attributes</key>
 			<dict>
 				<key>LastUpgradeCheck</key>
-				<string>1300</string>
+				<string>1430</string>
 				<key>ORGANIZATIONNAME</key>
 				<string></string>
 				<key>TargetAttributes</key>
@@ -639,6 +661,7 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 				<string>06D524FD2936081600293032</string>
 				<string>97C146FE1CF9000F007C117D</string>
 				<string>97C146FC1CF9000F007C117D</string>
+				<string>5A93A02F2AFAD8C300103ABE</string>
 			</array>
 			<key>isa</key>
 			<string>PBXResourcesBuildPhase</string>
@@ -705,6 +728,7 @@ echo "SUCCESS" &gt; "${SCRIPT_OUTPUT_FILE_0}"
 		<dict>
 			<key>children</key>
 			<array>
+				<string>5A93A02E2AFAD8C300103ABE</string>
 				<string>8AF2D80C2A0F87BD0096B1C8</string>
 				<string>06D524FC2936081600293032</string>
 				<string>97C146FA1CF9000F007C117D</string>
