@@ -639,6 +639,7 @@ class _TabHome extends State<TabHome> with TickerProviderStateMixin {
                                 ? challengesList.map((item) {
                                     return Container(
                                       child: FutureBuilder<PaletteGenerator?>(
+                                        future: null,
                                         builder: (context, snapshot) {
                                           return Container(
                                             margin: EdgeInsets.only(
