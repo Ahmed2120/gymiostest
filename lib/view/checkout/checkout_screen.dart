@@ -62,15 +62,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   void initiateSession() {
     MFSDK.initiateSession(null, (MFResult<MFInitiateSessionResponse> result) => {
       if(result.isSuccess())
-        loadApplePay(result.response!)
-      else
+        {
+                  print('...................................................'),
+                  loadApplePay(result.response!)
+                }
+              else
         print(result.error?.toJson().toString())
     });
   }
 
   void loadApplePay(MFInitiateSessionResponse mfInitiateSessionResponse) {
     var request = MFExecutePaymentRequest.constructorForApplyPay(
-        0.100, MFCurrencyISO.KUWAIT_KWD);
+        0.100, MFCurrencyISO.Egyptian_Pound_EGP);
     mfApplePayButton.loadWithStartLoading(
         mfInitiateSessionResponse,
         request,
