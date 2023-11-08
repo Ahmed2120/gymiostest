@@ -6,8 +6,9 @@ import 'package:provider/provider.dart';
 import '../../util/color_category.dart';
 
 class PaymentOptionListItem extends StatelessWidget {
-  const PaymentOptionListItem({super.key, required this.paymentMethod});
+  const PaymentOptionListItem({super.key, required this.paymentMethod, this.session});
   final PaymentMethods paymentMethod;
+  final String? session;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -34,7 +35,7 @@ class PaymentOptionListItem extends StatelessWidget {
               style: ElevatedButton.styleFrom(backgroundColor: accentColor),
               onPressed: () {
                 context.read<CheckoutProvider>().pay(context,
-                    paymentMethod.paymentMethodId, paymentMethod.totalAmount);
+                    paymentMethod.paymentMethodId, paymentMethod.totalAmount, session);
               },
               child: Text("Pay")),
         ),

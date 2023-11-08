@@ -44,13 +44,15 @@ class CheckoutProvider extends ChangeNotifier {
     });
   }
 
-  void pay(BuildContext context, paymentId, price) async {
+  void pay(BuildContext context, paymentId, price, String? session) async {
     final subProvider = context.read<SubscriptionsProvider>();
     if (_paymentInProgress)
       return;
     else
       _paymentInProgress = true;
     var request = new MFExecutePaymentRequest(paymentId, price);
+    request.displayCurrencyIso = MFCurrencyISO.Egyptian_Pound_EGP;
+    request.sessionId = session;
 
     MFSDK.callExecutePaymentForInAppApplePay(context, request, MFAPILanguage.EN,
         (String invoiceId, MFResult<MFPaymentStatusResponse> result) async {

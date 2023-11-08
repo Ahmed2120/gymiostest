@@ -16,12 +16,13 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   late MFApplePayButton mfApplePayButton;
+  String? session;
 
   @override
   void initState() {
     final args = Get.arguments as Package;
     context.read<CheckoutProvider>().initPayment(args);
-    // initiateSession();
+    initiateSession();
     super.initState();
   }
 
@@ -48,7 +49,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     value.paymentMethods[index].isDirectPayment!
                         ? SizedBox()
                         :  PaymentOptionListItem(
-                            paymentMethod: value.paymentMethods[index]),
+                            paymentMethod: value.paymentMethods[index], session: session,),
               ),
       ),
     );
@@ -66,7 +67,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       if(result.isSuccess())
         {
                   print('...................................................'),
-                  loadApplePay(result.response!)
+                  // loadApplePay(result.response!)
+          session = result.response?.sessionId
                 }
               else
         print(result.error?.toJson().toString())
