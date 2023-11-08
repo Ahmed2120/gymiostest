@@ -16,7 +16,7 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   late MFApplePayButton mfApplePayButton;
-  String? session;
+  MFInitiateSessionResponse? session;
 
   @override
   void initState() {
@@ -61,6 +61,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   }
 
   void initiateSession() {
+    // final request = MFInitiateSessionRequest();
+
     MFSDK.initiateSession(null, (MFResult<MFInitiateSessionResponse> result) => {
       print('...................................................'),
       print('...................................................'),
@@ -68,7 +70,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         {
                   print('...................................................'),
                   // loadApplePay(result.response!)
-          session = result.response?.sessionId
+          session = result.response
                 }
               else
         print(result.error?.toJson().toString())
