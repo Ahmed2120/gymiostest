@@ -47,7 +47,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 itemBuilder: (context, index) =>
                     value.paymentMethods[index].isDirectPayment!
                         ? SizedBox()
-                        : PaymentOptionListItem(
+                        : value.paymentMethods[index].paymentMethodId == 25 ? createApplePayButton() : PaymentOptionListItem(
                             paymentMethod: value.paymentMethods[index]),
               ),
       ),
