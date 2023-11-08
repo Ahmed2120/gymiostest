@@ -42,14 +42,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : ListView.builder(
-                itemCount: value.paymentMethods.length,
-                itemBuilder: (context, index) =>
-                    value.paymentMethods[index].isDirectPayment!
-                        ? SizedBox()
-                        : value.paymentMethods[index].paymentMethodId == 25 ? createApplePayButton() : PaymentOptionListItem(
-                            paymentMethod: value.paymentMethods[index]),
-              ),
+            : createApplePayButton(),
       ),
     );
   }
@@ -61,6 +54,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
   void initiateSession() {
     MFSDK.initiateSession(null, (MFResult<MFInitiateSessionResponse> result) => {
+      print('...................................................'),
+      print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'),
       if(result.isSuccess())
         {
                   print('...................................................'),
