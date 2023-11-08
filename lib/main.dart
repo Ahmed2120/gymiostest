@@ -117,15 +117,9 @@ Future<void> _configureLocalTimeZone() async {
 
   final String? timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
 
-  try {
-    Location getlocal =
-        tz.getLocation(timeZoneName!.replaceAll("Calcutta", "Kolkata"));
-    tz.setLocalLocation(getlocal);
-  } catch (e) {
-    print(e);
-    Location getlocal = tz.getLocation("Calcutta");
-    tz.setLocalLocation(getlocal);
-  }
+  Location getlocal =
+  tz.getLocation("Africa/Cairo");
+  tz.setLocalLocation(getlocal);
 }
 
 // ignore: must_be_immutable
