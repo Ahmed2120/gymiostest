@@ -21,7 +21,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   void initState() {
     final args = Get.arguments as Package;
     context.read<CheckoutProvider>().initPayment(args);
-    initiateSession();
+    // initiateSession();
     super.initState();
   }
 
@@ -42,7 +42,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : createApplePayButton(),
+            : ListView.builder(
+                itemCount: value.paymentMethods.length,
+                itemBuilder: (context, index) =>
+                    value.paymentMethods[index].isDirectPayment!
+                        ? SizedBox()
+                        :  PaymentOptionListItem(
+                            paymentMethod: value.paymentMethods[index]),
+              ),
       ),
     );
   }
@@ -55,7 +62,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   void initiateSession() {
     MFSDK.initiateSession(null, (MFResult<MFInitiateSessionResponse> result) => {
       print('...................................................'),
-      print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'),
+      print('...................................................'),
       if(result.isSuccess())
         {
                   print('...................................................'),

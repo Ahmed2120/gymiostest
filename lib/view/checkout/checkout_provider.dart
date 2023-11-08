@@ -52,7 +52,7 @@ class CheckoutProvider extends ChangeNotifier {
       _paymentInProgress = true;
     var request = new MFExecutePaymentRequest(paymentId, price);
 
-    MFSDK.executePayment(context, request, MFAPILanguage.EN, onPaymentResponse:
+    MFSDK.callExecutePaymentForInAppApplePay(context, request, MFAPILanguage.EN,
         (String invoiceId, MFResult<MFPaymentStatusResponse> result) async {
       if (result.isSuccess()) {
         await addSubscription(result.response!.invoiceId!.toString());
