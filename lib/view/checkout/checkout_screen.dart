@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_women_workout_ui/models/package.dart';
 import 'package:flutter_women_workout_ui/view/checkout/checkout_provider.dart';
 import 'package:flutter_women_workout_ui/view/checkout/payment_option_list_item.dart';
 import 'package:get/get.dart';
+import 'package:myfatoorah_flutter/myfatoorah_flutter.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -40,12 +43,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             : ListView.builder(
                 itemCount: value.paymentMethods.length,
                 itemBuilder: (context, index) =>
-                    value.paymentMethods[index].isDirectPayment!
+                    value.paymentMethods[index].isDirectPayment! || checkApple(value.paymentMethods[index])
                         ? SizedBox()
                         : PaymentOptionListItem(
                             paymentMethod: value.paymentMethods[index]),
               ),
       ),
     );
+  }
+  bool checkApple(PaymentMethods paymentMethod){
+    return paymentMethod.paymentMethodEn!.contains('pple') && !Platform.isIOS;
   }
 }
