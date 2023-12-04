@@ -25,6 +25,8 @@ class Languages extends Translations {
           "Share With Friends": "شارك مع الاصدقاء",
           "Feedback": "إرسال الملاحظات",
           "Logout": "تسجيل خروج",
+          "Delete Account": "حذف الحساب",
+          "delete_Acc_desc": "هل انت متاكد",
           "Support Us": "ادعمنا",
           'Pounds,Feet and inches': 'الجنيه والقدم والبوصة',
           //home
@@ -151,6 +153,8 @@ class Languages extends Translations {
           "Share With Friends": "Share With Friends",
           "Feedback": "Feedback",
           "Logout": "Logout",
+          "Delete Account": "Delete Account",
+          "delete_Acc_desc": "Are you sure",
           "Support Us": "Support Us",
 
           'Pounds,Feet and inches': 'Pounds,Feet and inches',

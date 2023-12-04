@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_women_workout_ui/view/language/language_screen.dart';
 import 'package:flutter_women_workout_ui/view/subscriptions/subscriptions_history_screen.dart';
 import 'package:flutter_women_workout_ui/view/subscriptions/subscriptions_screen.dart';
+import '../view/checkout/applepay_screen.dart';
+import '../view/checkout/cart_checkout_screen.dart';
 import '../view/checkout/checkout_screen.dart';
 import '../view/home/home_widget.dart';
 import '../view/setting/widget_health_info.dart';
@@ -36,6 +38,8 @@ class AppPages {
     Routes.homeScreenRoute: (context) => HomeWidget(),
     Routes.subscriptionsRoute: (context) => SubscriptionsScreen(),
     Routes.checkoutRoute: (context) => CheckoutScreen(),
+    Routes.cartCheckoutRoute: (context) => CartCheckoutScreen(),
+    Routes.appleCheckoutRoute: (context) => ApplePayScreen(),
     Routes.subscriptionHistoryRoute: (context) => SubscriptionsHistoryScreen(),
     Routes.languageRoute: (context) => LanguageScreen()
   };

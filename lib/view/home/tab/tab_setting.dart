@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -1441,6 +1442,30 @@ class _TabSettings extends State<TabSettings> {
                           )),
                     ),
                     ConstantWidget.getVerSpace(20.h),
+
+                    getButton(context, Colors.white, "Delete Account".tr, Colors.red,
+                        () {
+
+                      AwesomeDialog(
+                          context: context,
+                          dialogType: DialogType.info,
+                          animType: AnimType.rightSlide,
+                          title: "Delete Account".tr,
+                          desc: "delete_Acc_desc".tr,
+                          btnCancelOnPress: () {},
+                          btnOkOnPress: () {
+                            checkDeleteAccount();
+                          },
+                          )..show();
+                    }, 20.sp,
+                        weight: FontWeight.w700,
+                        buttonHeight: 60.h,
+                      isBorder: true,
+                      borderWidth: 1,
+                        borderRadius: BorderRadius.circular(22.h),
+                    ),
+
+                    ConstantWidget.getVerSpace(20.h),
                     getButton(context, accentColor, "Logout".tr, Colors.white,
                         () {
                       checkNetwork();
@@ -1459,6 +1484,15 @@ class _TabSettings extends State<TabSettings> {
     bool isNetwork = await ConstantUrl.getNetwork();
     if (isNetwork) {
       logOut();
+    } else {
+      getNoInternet(context);
+    }
+  }
+
+  checkDeleteAccount() async {
+    bool isNetwork = await ConstantUrl.getNetwork();
+    if (isNetwork) {
+      deleteAccount();
     } else {
       getNoInternet(context);
     }
@@ -1499,6 +1533,51 @@ class _TabSettings extends State<TabSettings> {
           PrefData.setUserDetail("");
 
           ConstantUrl.showToast('Log out', context);
+          Get.toNamed(Routes.signInRoute);
+        } else {
+          ConstantUrl.showToast('Please Try Again', context);
+        }
+
+        print("value-----failed");
+      }
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    String deviceId = await ConstantUrl.getDeviceId();
+
+    String s = await PrefData.getUserDetail();
+
+    if (s.isNotEmpty) {
+      UserDetail userDetail = await ConstantUrl.getUserDetail();
+      String session = await PrefData.getSession();
+
+      Map data = {
+        ConstantUrl.paramSession: session,
+        ConstantUrl.paramUserId: userDetail.userId,
+        ConstantUrl.paramDeviceId: deviceId,
+      };
+
+      print(
+          data);
+
+      final response =
+          await http.post(Uri.parse(ConstantUrl.deleteAccountUrl), body: data);
+      if (response.statusCode == 200) {
+        // await progressDialog.hide();
+
+        print("res--" + response.body.toString());
+
+        Map<String, dynamic> map = json.decode(response.body);
+
+        // LogoutModel user = LogoutModel.fromJson(map);
+
+        if (map['data']['success'] == 1) {
+          PrefData.setIsSignIn(false);
+          PrefData.setSession("");
+          PrefData.setUserDetail("");
+
+          ConstantUrl.showToast('Account Deleted', context);
           Get.toNamed(Routes.signInRoute);
         } else {
           ConstantUrl.showToast('Please Try Again', context);

@@ -15,6 +15,8 @@ abstract class Routes {
   static const homeScreenRoute = Paths.homeScreenPath;
   static const subscriptionsRoute = "/subscriptions";
   static const checkoutRoute = "/checkout";
+  static const cartCheckoutRoute = "/cartCheckout";
+  static const appleCheckoutRoute = "/appleCheckout";
   static const subscriptionHistoryRoute = "/subscriptions-history";
   static const languageRoute = "/language";
 }

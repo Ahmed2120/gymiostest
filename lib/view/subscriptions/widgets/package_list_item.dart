@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../routes/app_routes.dart';
 import '../../../util/color_category.dart';
+import '../../checkout/cart_checkout_screen.dart';
 
 class PackageListItem extends StatelessWidget {
   const PackageListItem({
@@ -17,7 +18,10 @@ class PackageListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Routes.checkoutRoute, arguments: package);
+        // Get.toNamed(Routes.checkoutRoute, arguments: package);
+        // Get.toNamed(Routes.cartCheckoutRoute, arguments: package);
+        Get.toNamed(Routes.appleCheckoutRoute, arguments: package);
+        // Navigator.push(context, MaterialPageRoute(builder: (context)=> CartCheckoutScreen()));
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),

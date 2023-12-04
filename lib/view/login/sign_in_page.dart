@@ -190,7 +190,9 @@ class _SignInPage extends State<SignInPage> {
         contentType: Headers.formUrlEncodedContentType,
       ),
     );
-
+print(';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;');
+print(data);
+print('--------> ${response.data}');
     if (response.statusCode == 200) {
       Map<String, dynamic> map = json.decode(response.data);
 

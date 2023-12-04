@@ -21,6 +21,7 @@ class ConstantUrl {
   static String baseUrl = mainUrl + 'api/';
   static String uploadUrl = mainUrl + 'uploads/';
   static String registerUrl = baseUrl + "register.php";
+  static String deleteAccountUrl = baseUrl + "deleteaccount.php";
   static String packagesUrl = baseUrl + "package.php";
 
   static String addSubscription = baseUrl + "addSubscription.php";
