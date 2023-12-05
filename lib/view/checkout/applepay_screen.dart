@@ -64,40 +64,14 @@ class _ApplePayScreenState extends State<ApplePayScreen> {
     MFSDK.initiateSession(null, (MFResult<MFInitiateSessionResponse> result) =>
     {
       if(result.isSuccess())
-        loadApplePay(result.response!)
-      else
+        // loadApplePay(result.response!)
+    context.read<CheckoutProvider>().loadApplePay(context, result.response!, mfApplePayButton!, double.parse(args!.price))
+        else
         print(result.error?.toJson().toString())
     });
   }
 
-  void loadApplePay(MFInitiateSessionResponse mfInitiateSessionResponse) {
-    var request = MFExecutePaymentRequest.constructorForApplyPay(
-        0.100, MFCurrencyISO.KUWAIT_KWD);
 
-    mfApplePayButton!.load(
-        mfInitiateSessionResponse,
-        request,
-        MFAPILanguage.EN,
-            (String invoiceId, MFResult<MFPaymentStatusResponse> result) =>
-        {
-        if (result.isSuccess())
-        {
-        setState(() {
-        print("invoiceId: " + invoiceId);
-        // _response = result.response?.toJson().toString();
-        // print("Response: " + _response!);
-        })
-        }
-        else
-    {
-        setState(()
-    {
-      print("invoiceId: " + invoiceId);
-      print("Error: " + result.error!.toJson().toString());
-      // _response = result.error?.message;
-    })
-  }});
-  }
 
   createApplePayButton() {
     mfApplePayButton = MFApplePayButton();
